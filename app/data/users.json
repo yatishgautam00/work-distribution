@@ -1,12 +1,106 @@
 [
   {
-    "email": "fd",
-    "password": "fd",
-    "role": "employee"
+    "email": "admin@gmail.com",
+    "password": "admin",
+    "role": "employer"
   },
   {
-    "email": "hello",
-    "password": "hello",
-    "role": "employer"
+    "name": "Alice Johnson",
+    "age": "29",
+    "gender": "Female",
+    "email": "alice.johnson@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": "Web Dev"
+  },
+  {
+    "name": "Bob Smith",
+    "age": "35",
+    "gender": "Male",
+    "email": "bob.smith@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": null
+  },
+  {
+    "name": "Charlie Davis",
+    "age": "28",
+    "gender": "Male",
+    "email": "charlie.davis@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": null
+  },
+  {
+    "name": "Diana Carter",
+    "age": "40",
+    "gender": "Female",
+    "email": "diana.carter@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": "Management"
+  },
+  {
+    "name": "Ethan Brown",
+    "age": "31",
+    "gender": "Male",
+    "email": "ethan.brown@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": null
+  },
+  {
+    "name": "Fiona Green",
+    "age": "27",
+    "gender": "Female",
+    "email": "fiona.green@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": null
+  },
+  {
+    "name": "George Wilson",
+    "age": "38",
+    "gender": "Male",
+    "email": "george.wilson@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": null
+  },
+  {
+    "name": "Hannah Lee",
+    "age": "25",
+    "gender": "Female",
+    "email": "hannah.lee@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": "Frontend"
+  },
+  {
+    "name": "Isaac Martinez",
+    "age": "33",
+    "gender": "Male",
+    "email": "isaac.martinez@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": ""
+  },
+  {
+    "name": "Jessica White",
+    "age": "30",
+    "gender": "Female",
+    "email": "jessica.white@example.com",
+    "password": "123456",
+    "role": "employee",
+    "work": null
+  },
+  {
+    "name": "Employee First",
+    "age": "32",
+    "gender": "Female",
+    "email": "employeefdfdfdfd1@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "work": "Backend"
   }
 ]
