@@ -98,9 +98,17 @@
     "name": "Employee First",
     "age": "32",
     "gender": "Female",
-    "email": "employeefdfdfdfd1@gmail.com",
+    "email": "employee1@gmail.com",
     "password": "123456",
     "role": "employee",
     "work": "Backend"
+  },
+  {
+    "name": "yatish",
+    "age": "23",
+    "gender": "Male",
+    "email": "yatish@gmail.com",
+    "password": "123456",
+    "role": "employee"
   }
 ]
