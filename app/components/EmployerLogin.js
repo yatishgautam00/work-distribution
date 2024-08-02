@@ -14,34 +14,46 @@ export default function EmployerLogin() {
   const router = useRouter();
 
   const handleLogin = async () => {
-    const response = await fetch("/api/users");
-    const users = await response.json();
+    try {
+      const response = await fetch("/api/users");
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+      const users = await response.json();
 
-    const user = users.find(
-      (user) =>
-        user.email === email &&
-        user.password === password &&
-        user.role === "employer"
-    );
+      const user = users.find(
+        (user) =>
+          user.email === email &&
+          user.password === password &&
+          user.role === "employer"
+      );
 
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-      toast.success("Login Successful")
-      router.push(`/employer/work-distribution`);
-    } else {
-      setError("Invalid credentials");
-      toast.error("Login Failed")
+      if (user) {
+        // Ensure localStorage is accessed only on the client side
+        if (typeof window !== 'undefined') {
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+        toast.success("Login Successful");
+        router.push(`/employer/work-distribution`);
+      } else {
+        setError("Invalid credentials");
+        toast.error("Login Failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("An error occurred. Please try again.");
+      toast.error("Login Failed");
     }
   };
 
   return (
     <div className="shadow-xl border-t-4 border-t-blue-200 gap-3 rounded-lg py-5 px-6">
-      <div className="flex flex-col w-full  justify-center items-center ">
+      <div className="flex flex-col w-full justify-center items-center">
         <h2 className="text-2xl font-medium pb-3 border-b-2">Employer Login</h2>
       </div>
       {/* this is content */}
       <div className="flex flex-col w-full gap-3 py-4">
-        <div className="">
+        <div>
           <label className="label">
             <span className="text-base label-text">Email</span>
           </label>
@@ -58,7 +70,6 @@ export default function EmployerLogin() {
           <label className="label">
             <span className="text-base label-text">Password</span>
           </label>
-
           <Input
             type="password"
             placeholder="Enter Password"
@@ -74,7 +85,7 @@ export default function EmployerLogin() {
         <Button
           className="bg-blue-500 text-white py-2 px-4 rounded mb-2"
           onClick={handleLogin}
-          type="submit"
+          type="button"  // Changed from submit to button to prevent form submission issues
         >
           Login
         </Button>
@@ -85,7 +96,6 @@ export default function EmployerLogin() {
         <span>
           Don't have an account?{" "}
           <Link href={`/employer/register`}>
-            {" "}
             <span className="text-blue-500">Sign up</span>
           </Link>
         </span>

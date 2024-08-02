@@ -8,11 +8,6 @@ import EmployerLogin from "./EmployerLogin";
 
 function Hero() {
   
-  const [emailEmployee, setEmailEmployee] = useState(null);
-  const [emailEmployer, setEmailEmployer] = useState(null);
-  const [passwordEmployee, setPasswordEmployee] = useState(null);
-  const [passwordEmployer, setPasswordEmployer] = useState(null);
-
   return (
     <section className="md:px-14 h-full mt-5">
      

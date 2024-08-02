@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -10,14 +10,19 @@ export default function EmployerDashboard() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
+      try {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
 
-      if (!storedUser || storedUser.role !== "employer") {
+        if (!storedUser || storedUser.role !== "employer") {
+          router.push("/");
+          return;
+        }
+
+        setUser(storedUser);
+      } catch (error) {
+        console.error("Error fetching user:", error);
         router.push("/");
-        return;
       }
-
-      setUser(storedUser);
     };
 
     fetchUser();
@@ -28,14 +33,16 @@ export default function EmployerDashboard() {
     router.push("/");
   };
 
-  if (!user) return null; // Optionally, you can display a loading spinner here
+  if (!user) {
+    return <div>Loading...</div>; // Display a loading message or spinner
+  }
 
   return (
-    <div className="p-4 bg-white  mt-4 flex flex-col justify-center items-center">
-      <div className="rounded-xl shadow-md p-5 border-t-8  border-t-blue-500">
+    <div className="p-4 bg-white mt-4 flex flex-col justify-center items-center">
+      <div className="rounded-xl shadow-md p-5 border-t-8 border-t-blue-500">
         <h2 className="text-2xl mb-4">Welcome to the Employer Dashboard!</h2>
         <Button
-        varient='destructive'
+          variant="destructive"  // Corrected prop name
           className="bg-red-500 text-white py-2 px-4 rounded"
           onClick={handleLogout}
         >

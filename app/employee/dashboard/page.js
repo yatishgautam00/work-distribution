@@ -10,14 +10,19 @@ export default function EmployeeDashboard() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const storedUser = JSON.parse(localStorage.getItem('user'));
-      
-      if (!storedUser || storedUser.role !== 'employee') {
-        router.push('/');
-        return;
-      }
+      try {
+        const storedUser = JSON.parse(localStorage.getItem('user'));
 
-      setUser(storedUser);
+        if (!storedUser || storedUser.role !== 'employee') {
+          router.push('/');
+          return;
+        }
+
+        setUser(storedUser);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        router.push('/');
+      }
     };
 
     fetchUser();
@@ -28,14 +33,16 @@ export default function EmployeeDashboard() {
     router.push('/');
   };
 
-  if (!user) return null; // Optionally, you can display a loading spinner here
+  if (user === null) {
+    return <div>Loading...</div>; // Display loading state while fetching user
+  }
 
   return (
-    <div className="p-4 bg-white  mt-4 flex flex-col justify-center items-center">
-      <div className="rounded-xl shadow-md p-5 border-t-8  border-t-blue-500">
+    <div className="p-4 bg-white mt-4 flex flex-col justify-center items-center">
+      <div className="rounded-xl shadow-md p-5 border-t-8 border-t-blue-500">
         <h2 className="text-2xl mb-4">Welcome to the Employee's Dashboard!</h2>
         <Button
-        varient='destructive'
+          variant="destructive"  // Ensure this variant is correctly defined in your Button component
           className="bg-red-500 text-white py-2 px-4 rounded"
           onClick={handleLogout}
         >
